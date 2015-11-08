@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "openAjpPort",
+    "packageName": "mark.quinn",
+    "packageFolder": "mark/quinn",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "d9443054ecffc6ae41b0912a82deb97699482f86"
+  }
+}
