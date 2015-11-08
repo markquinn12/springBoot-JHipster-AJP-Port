@@ -15,13 +15,16 @@ Full JHipster technology stack can he found [here] (https://jhipster.github.io/t
 You must have the following installed: Maven, Java 8
 
 choco install maven
+
 choco install jdk8
 
 ####Optional
 Maven takes care of eveything if you just want to build and run the application but if you want to change certain aspects then you will also need to install: Node.js, bower, grunt
 
 choco install nodejs
+
 npm install -g bower
+
 npm install -g grunt-cli
 
 ##Building and running the application
