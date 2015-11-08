@@ -7,7 +7,7 @@ I needed to correctly redirect traffic from a proxy machine to a machine which w
 "The Apache JServ Protocol (AJP) is a binary protocol that can proxy inbound requests from a web server through to an application server that sits behind the web server. It also supports some monitoring in that the web server can ping the application server."
 
 ##The Solution:
-The project which I have checked in is an out of the box JHipster [JHipster](https://jhipster.github.io/) application. JHipster comes bundled with a Spring boot webserver which uses Tomcat by default. I had to make a few changes to configure Spring boot to open the AJP port.
+The project which I have checked in is an out of the box [JHipster](https://jhipster.github.io/) application. JHipster comes bundled with a Spring boot webserver which uses Tomcat by default. I had to make a few changes to configure Spring boot to open the AJP port.
 
 Full JHipster technology stack can he found [here] (https://jhipster.github.io/tech_stack.html)
 
