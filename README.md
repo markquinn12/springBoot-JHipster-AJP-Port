@@ -47,7 +47,57 @@ The JHipster application will be available at: http://localhost:8080
 
 Done!
 
+##Code changes:
+To open the AJP port on port 8008 there was very little changes that needed to be made.
 
+Firstly in the application.yml file I added 
 
+```yml
+tomcatAjp:
+    port: 8008
+    remoteauthentication: false
+    enabled: true   
+    protocol: AJP/1.3
+    scheme: http
+```
 
+And then in the Application.java class we inject the properties defined above:
 
+```java
+@Value("${tomcatAjp.protocol}")
+String ajpProtocol;
+    
+@Value("${tomcatAjp.port}")
+String ajpPort;
+
+@Value("${tomcatAjp.enabled}")
+String ajpEnabled;     
+    
+@Value("${tomcatAjp.scheme}")
+String ajpScheme;
+```    
+  
+And then in the same Application.java class I created a servlet factory bean using the injected properties.
+    
+```java
+@Bean
+public EmbeddedServletContainerFactory servletContainer() 
+{
+   Integer ajpPortInt = Integer.parseInt(ajpPort);
+   Boolean ajpEnabledBool = Boolean.valueOf(ajpEnabled);    
+    
+    TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
+    if (ajpEnabledBool)
+    {
+        Connector ajpConnector = new Connector(ajpProtocol);
+        ajpConnector.setProtocol(ajpProtocol);
+        ajpConnector.setPort(ajpPortInt);
+        ajpConnector.setSecure(false);
+        ajpConnector.setAllowTrace(false);
+        ajpConnector.setScheme(ajpScheme);
+        tomcat.addAdditionalTomcatConnectors(ajpConnector);
+    }
+    
+    return tomcat;
+}
+```   
