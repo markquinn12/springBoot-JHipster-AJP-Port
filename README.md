@@ -50,7 +50,7 @@ Done!
 ##Code changes:
 To open the AJP port on port 8008 there was very little changes that needed to be made.
 
-Firstly in the application.yml file I added 
+Firstly in the [application.yml](/src/main/resources/config/application.yml) file I added 
 
 ```yml
 tomcatAjp:
@@ -61,7 +61,7 @@ tomcatAjp:
     scheme: http
 ```
 
-And then in the Application.java class we inject the properties defined above:
+And then in the [Application.java](/src/main/java/mark/quinn/Application.java) file we inject the properties defined above:
 
 ```java
 @Value("${tomcatAjp.protocol}")
@@ -77,7 +77,7 @@ String ajpEnabled;
 String ajpScheme;
 ```    
   
-And then in the same Application.java class I created a servlet factory bean using the injected properties.
+And then in the same [Application.java](/src/main/java/mark/quinn/Application.java) file I created a servlet factory bean using the injected properties.
     
 ```java
 @Bean
@@ -101,3 +101,14 @@ public EmbeddedServletContainerFactory servletContainer()
     return tomcat;
 }
 ```   
+
+A few imports are also needed.
+
+```java
+import org.apache.catalina.connector.Connector;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.context.annotation.Bean;
+```   
+
